@@ -1,13 +1,18 @@
 <template>
   <div class="container-fluid">
     <div class=row>
-      <div class="col-12"></div>
+      <Import />
     </div>
   </div>
 </template>
 
 <script>
+import Import from "./components/Import.vue"
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Import
+  }
 }
 </script>
