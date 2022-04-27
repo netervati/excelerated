@@ -1,13 +1,11 @@
 <template>
-    <div class="col-3">
+    <div class="col-sm-12 col-md-6 col-lg-3">
         <div class="card mt-3">
             <div class="card-body">
-                <form>
-                    <div class="input-group input-group-sm mb-3">
-                        <input type="file" ref="file" class="form-control"
-                                v-on:change="fileUploader()">
-                    </div>
-                </form>
+                <div class="input-group input-group-sm">
+                    <input type="file" ref="file" class="form-control"
+                            v-on:change="fileUploader()">
+                </div>
             </div>
         </div>
     </div>

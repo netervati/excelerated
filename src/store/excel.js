@@ -18,15 +18,17 @@ export const excelStore = defineStore('excel',{
             }
         },
         splitData(state) {
-            let split_data = {series: [], labels: [] }
-            if (state.excel_data.length > 0){
-                for (let x = 0, y = state.excel_data.length; x < y; x++){
-                    split_data.series.push(state.excel_data[x][0])
-                    split_data.labels.push(state.excel_data[x][1])
+            return (params) => {
+                let split_data = {series: [], labels: [] }
+                if (state.excel_data.length > 0){
+                    for (let x = 0, y = state.excel_data.length; x < y; x++){
+                        split_data.series.push(state.excel_data[x][params.data])
+                        split_data.labels.push(state.excel_data[x][params.label])
+                    }
                 }
-            }
 
-            return split_data
+                return split_data
+            }
         }
     }
 })

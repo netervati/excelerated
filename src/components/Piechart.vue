@@ -1,7 +1,13 @@
 <template>
-    <div class="col-3">
+    <div class="col-sm-12 col-md-6 col-lg-3">
         <div class="card mt-3">
             <div class="card-body">
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">Labels & Data</span>
+                    <input type="number" aria-label="Label Index" class="form-control" v-model="labelIndex" v-on:change="refreshData">
+                    <input type="number" aria-label="Data Index" class="form-control" v-model="dataIndex" v-on:change="refreshData">
+                </div>
+
                 <Pie :chart-data="chartData" />
             </div>
         </div>
@@ -35,12 +41,14 @@ export default {
                         data: []
                     },
                 ]
-            }
+            },
+            labelIndex: 0,
+            dataIndex: 1,
         }
     },
     methods: {
         refreshData() {
-            const split_data = this.excel.splitData
+            const split_data = this.excel.splitData({ data: this.dataIndex, label: this.labelIndex })
             this.chartData = {
                 labels: split_data.labels,
                 datasets: [
