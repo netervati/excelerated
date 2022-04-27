@@ -21,9 +21,22 @@
 import { excelStore } from "../store/excel"
 import 'chart.js/auto';
 import { Pie } from 'vue-chartjs'
-import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement, CategoryScale } from 'chart.js'
+import { 
+    Chart as ChartJS, 
+    Title, 
+    Tooltip, 
+    Legend, 
+    ArcElement, 
+    CategoryScale 
+} from 'chart.js'
 
-ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale)
+ChartJS.register(
+    Title, 
+    Tooltip, 
+    Legend, 
+    ArcElement, 
+    CategoryScale
+)
 
 export default {
     setup() {
@@ -40,7 +53,11 @@ export default {
                 labels: [],
                 datasets: [
                     {
-                        backgroundColor: ['#43857C', '#4D658D', '#68B159'],
+                        backgroundColor: [
+                            '#43857C', 
+                            '#4D658D', 
+                            '#68B159'
+                        ],
                         data: []
                     },
                 ]
