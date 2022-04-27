@@ -11,7 +11,7 @@
                         v-model="dataIndex" 
                         v-on:change="refreshData">
                 </section>
-                <Pie :chart-data="chartData" />
+                <Bar :chart-data="chartData" />
             </div>
         </div>
     </section>
@@ -21,23 +21,26 @@
 import { HEX_COLORS } from "../constants/hexcodes";
 import { excelStore } from "../store/excel"
 import 'chart.js/auto';
-import { Pie } from 'vue-chartjs'
+import { Bar } from 'vue-chartjs'
 import { 
     Chart as ChartJS, 
     Title, 
     Tooltip, 
     Legend, 
-    ArcElement, 
-    CategoryScale 
+    BarElement, 
+    CategoryScale, 
+    LinearScale 
 } from 'chart.js'
 
 ChartJS.register(
     Title, 
     Tooltip, 
     Legend, 
-    ArcElement, 
-    CategoryScale
+    BarElement, 
+    CategoryScale, 
+    LinearScale
 )
+
 
 export default {
     setup() {
@@ -46,14 +49,15 @@ export default {
         return { excel }
     },
     components: {
-        Pie
+        Bar
     },
-    data() {
+     data() {
         return {
             chartData: {
                 labels: [],
                 datasets: [
                     {
+                        label: 'Bar Chart',
                         backgroundColor: HEX_COLORS,
                         data: []
                     },
