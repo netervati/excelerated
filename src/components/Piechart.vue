@@ -1,8 +1,8 @@
 <template>
-    <div class="col-sm-12 col-md-6 col-lg-3">
+    <section class="col-sm-12 col-md-6 col-lg-3">
         <div class="card mt-3">
             <div class="card-body">
-                <div class="input-group input-group-sm mb-3">
+                <section class="input-group input-group-sm mb-3">
                     <span class="input-group-text">Labels & Data</span>
                     <input type="number" aria-label="Label Index" class="form-control" 
                         v-model="labelIndex" 
@@ -10,11 +10,11 @@
                     <input type="number" aria-label="Data Index" class="form-control" 
                         v-model="dataIndex" 
                         v-on:change="refreshData">
-                </div>
+                </section>
                 <Pie :chart-data="chartData" />
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>

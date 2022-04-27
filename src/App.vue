@@ -1,9 +1,9 @@
 <template>
   <div class="container-fluid">
-    <div class=row>
+    <main class=row>
       <Import />
       <Piechart />
-    </div>
+    </main>
   </div>
 </template>
 

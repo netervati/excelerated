@@ -1,14 +1,14 @@
 <template>
-    <div class="col-sm-12 col-md-6 col-lg-3">
+    <section class="col-sm-12 col-md-6 col-lg-3">
         <div class="card mt-3">
             <div class="card-body">
-                <div class="input-group input-group-sm">
+                <section class="input-group input-group-sm">
                     <input type="file" ref="file" class="form-control"
                             v-on:change="fileUploader()">
-                </div>
+                </section>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
