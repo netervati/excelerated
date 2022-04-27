@@ -1,5 +1,5 @@
 <template>
-    <div class="col-4">
+    <div class="col-3">
         <div class="card mt-3">
             <div class="card-body">
                 <form>

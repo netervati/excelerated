@@ -1,9 +1,8 @@
 <template>
-    <div class="col-4">
+    <div class="col-3">
         <div class="card mt-3">
             <div class="card-body">
-                <apexchart type="pie" :options="chartOptions" :series="series" />
-                {{ chartOptions.labels }}
+                <Pie :chart-data="chartData" />
             </div>
         </div>
     </div>
@@ -11,6 +10,11 @@
 
 <script>
 import { excelStore } from "../store/excel"
+import 'chart.js/auto';
+import { Pie } from 'vue-chartjs'
+import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement, CategoryScale } from 'chart.js'
+
+ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale)
 
 export default {
     setup() {
@@ -18,43 +22,38 @@ export default {
 
         return { excel }
     },
-    computed: {
-        refreshTrigger: {
-            set() {
-                this.series = this.excel.splitData.series
-                this.chartOptions.labels = this.excel.splitData.labels
-            }
-        }
+    components: {
+        Pie
     },
     data() {
         return {
-            series: [],
-            chartOptions: {
-                chart: {
-                    width: 380,
-                    type: 'pie',
-                },
+            chartData: {
                 labels: [],
-                responsive: [
+                datasets: [
                     {
-                        breakpoint: 480,
-                        options: {
-                            chart: { width: 200 },
-                            legend: { position: 'bottom' }
-                        }
-                    }
+                        backgroundColor: ['#43857C', '#4D658D', '#68B159'],
+                        data: []
+                    },
                 ]
-            },
-            test: false
+            }
         }
     },
     methods: {
         refreshData() {
-            this.refreshTrigger = Date.now()
+            const split_data = this.excel.splitData
+            this.chartData = {
+                labels: split_data.labels,
+                datasets: [
+                    {
+                        backgroundColor:  ['#43857C', '#4D658D', '#68B159'],
+                        data: split_data.series
+                    },
+                ]
+            }
         }
-    }, 
+    },
     mounted() {
-        this.excel.$subscribe( this.refreshData)
+        this.excel.$subscribe(this.refreshData)
     }
 }
 </script>
