@@ -25,9 +25,9 @@ export default {
         const fileUploader = async () => {
             /** TODO: Handle error */
             try {
-                excel.excel_data = await readXlsxFile(file.value.files[0]).
+                excel.excelData = await readXlsxFile(file.value.files[0]).
                                         then( rows => { return rows })
-                // console.log (excel.excel_data)
+                // console.log (excel.excelData)
                 // console.log (excel.groupData)
             }
             catch { console.log("Error") }

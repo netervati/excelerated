@@ -4,30 +4,34 @@ import { groupedData } from "../utils/unique"
 
 export const excelStore = defineStore('excel',{
     state: ()=> {
-        return { excel_data: [] }
+        return { excelData: [] }
     },
     getters: {
         findTopFive(state) {
-            return (col_index, sort_order) => {
-                return sortData(col_index, sort_order, state.excel_data)
+            return (colIndex, sortOrder) => {
+                return sortData(colIndex, sortOrder, state.excelData)
             }
         },
         groupData(state) {
-            return (col_value) => {
-                return groupedData(col_value, state.excel_data)
+            return (colValue) => {
+                return groupedData({
+                    data: state.excelData,
+                    column: colValue
+                })
             }
         },
         splitData(state) {
             return (params) => {
-                let split_data = {series: [], labels: [] }
-                if (state.excel_data.length > 0){
-                    for (let x = 0, y = state.excel_data.length; x < y; x++){
-                        split_data.series.push(state.excel_data[x][params.data])
-                        split_data.labels.push(state.excel_data[x][params.label])
+                const splittedData = {series: [], labels: [] }
+                
+                if (state.excelData.length > 0){
+                    for (let x = 0, y = state.excelData.length; x < y; x++){
+                        splittedData.series.push(state.excelData[x][params.data])
+                        splittedData.labels.push(state.excelData[x][params.label])
                     }
                 }
 
-                return split_data
+                return splittedData
             }
         }
     }

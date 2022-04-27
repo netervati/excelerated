@@ -1,18 +1,18 @@
-export const sortData = function (col_index, sort_order, temp_array) {
-    if (sort_order == 0) {
-        temp_array.sort(
+export const sortData = function (colIndex, sortOrder, tempArray) {
+    if (sortOrder == 0) {
+        tempArray.sort(
             (a, b) => {
-                return a[col_index] - b[col_index]
+                return a[colIndex] - b[colIndex]
             }
         )
     }else {
         /** TODO: Fix for descending string types */
-        temp_array.sort(
+        tempArray.sort(
             (a, b) => {
-                return a[col_index] - b[col_index]
+                return a[colIndex] - b[colIndex]
             }
         )
     }
 
-    return temp_array
+    return tempArray
 }

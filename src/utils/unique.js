@@ -1,13 +1,13 @@
-export const groupedData = function (col_value, temp_array) {
-    let unique_array = []
+export const groupedData = function (params) {
+    const uniqueArray = []
 
-    temp_array.filter(a => {
-        let exists = unique_array.filter(b => {
-            if (a[col_value] == b[col_value]) return b
+    params.data.filter(a => {
+        let exists = uniqueArray.filter(b => {
+            if (a[params.column] == b[params.column]) return b
         })
 
-        if (exists.length == 0) unique_array.push(a)
+        if (exists.length == 0) uniqueArray.push(a)
     })
 
-    return unique_array
+    return uniqueArray
 }

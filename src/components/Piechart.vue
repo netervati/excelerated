@@ -4,10 +4,13 @@
             <div class="card-body">
                 <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text">Labels & Data</span>
-                    <input type="number" aria-label="Label Index" class="form-control" v-model="labelIndex" v-on:change="refreshData">
-                    <input type="number" aria-label="Data Index" class="form-control" v-model="dataIndex" v-on:change="refreshData">
+                    <input type="number" aria-label="Label Index" class="form-control" 
+                        v-model="labelIndex" 
+                        v-on:change="refreshData">
+                    <input type="number" aria-label="Data Index" class="form-control" 
+                        v-model="dataIndex" 
+                        v-on:change="refreshData">
                 </div>
-
                 <Pie :chart-data="chartData" />
             </div>
         </div>
@@ -48,16 +51,13 @@ export default {
     },
     methods: {
         refreshData() {
-            const split_data = this.excel.splitData({ data: this.dataIndex, label: this.labelIndex })
-            this.chartData = {
-                labels: split_data.labels,
-                datasets: [
-                    {
-                        backgroundColor:  ['#43857C', '#4D658D', '#68B159'],
-                        data: split_data.series
-                    },
-                ]
-            }
+            const splittedData = this.excel.splitData({ 
+                data: this.dataIndex, 
+                label: this.labelIndex 
+            })
+
+            this.chartData.labels = splittedData.labels
+            this.chartData.datasets[0].data = splittedData.series
         }
     },
     mounted() {
