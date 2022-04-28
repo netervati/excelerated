@@ -1,6 +1,7 @@
 import { defineStore } from "pinia"
-import { sortData } from "../utils/datasort"
-import { mergeData } from "../utils/unique"
+import { sortData } from "../utils/sortdata"
+import { mergeData } from "../utils/mergedata"
+import { splitData } from "../utils/splitdata"
 
 export const excelStore = defineStore('excel', {
     state: ()=> {
@@ -8,11 +9,13 @@ export const excelStore = defineStore('excel', {
     },
     getters: {
         findTopFive(state) {
-            return (colIndex, sortOrder) => {
+            return (params) => {
+                const tmpData = JSON.parse(JSON.stringify(state.excelData))
+
                 return sortData({
-                    data: state.excelData,
-                    index: colIndex, 
-                    order: sortOrder
+                    data: tmpData,
+                    index: params.index, 
+                    order: params.order
                 })
             }
         },
@@ -26,30 +29,20 @@ export const excelStore = defineStore('excel', {
                     series: params.data
                 })
 
-                const splittedData = { series: [], labels: [] }
-
-                if (uniqueData.length > 0){
-                    for (let x = 0, y = uniqueData.length; x < y; x++){
-                        splittedData.series.push(uniqueData[x][params.data])
-                        splittedData.labels.push(uniqueData[x][params.label])
-                    }
-                }
-
-                return splittedData
+                return splitData({
+                    column: params.label,
+                    data: uniqueData,
+                    series: params.data
+                })
             }
         },
-        splitData(state) {
+        showData(state) {
             return (params) => {
-                const splittedData = { series: [], labels: [] }
-
-                if (state.excelData.length > 0){
-                    for (let x = 0, y = state.excelData.length; x < y; x++){
-                        splittedData.series.push(state.excelData[x][params.data])
-                        splittedData.labels.push(state.excelData[x][params.label])
-                    }
-                }
-
-                return splittedData
+                return splitData({
+                    column: params.label,
+                    data: state.excelData,
+                    series: params.data
+                })
             }
         }
     }

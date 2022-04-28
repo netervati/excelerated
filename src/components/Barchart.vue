@@ -77,7 +77,7 @@ export default {
     methods: {
         refreshData() {
             const splittedData = this.isGrouped === false ? 
-                this.excel.splitData({ 
+                this.excel.showData({ 
                     data: this.dataIndex, 
                     label: this.labelIndex 
                 }) :
