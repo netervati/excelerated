@@ -18,7 +18,7 @@ export const excelStore = defineStore('excel', {
         },
         groupData(state) {
             return (params) => {
-                const tmpData = state.excelData
+                const tmpData = JSON.parse(JSON.stringify(state.excelData))
 
                 const uniqueData = mergeData({
                     column: params.label,
@@ -26,7 +26,7 @@ export const excelStore = defineStore('excel', {
                     series: params.data
                 })
 
-                const splittedData = {series: [], labels: [] }
+                const splittedData = { series: [], labels: [] }
 
                 if (uniqueData.length > 0){
                     for (let x = 0, y = uniqueData.length; x < y; x++){
@@ -40,7 +40,7 @@ export const excelStore = defineStore('excel', {
         },
         splitData(state) {
             return (params) => {
-                const splittedData = {series: [], labels: [] }
+                const splittedData = { series: [], labels: [] }
 
                 if (state.excelData.length > 0){
                     for (let x = 0, y = state.excelData.length; x < y; x++){
