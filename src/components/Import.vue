@@ -1,12 +1,10 @@
 <template>
-    <section class="col-sm-12 col-md-6 col-lg-3">
-        <div class="card mt-3">
-            <div class="card-body">
-                <section class="input-group input-group-sm">
-                    <input type="file" ref="file" class="form-control"
-                            v-on:change="fileUploader()">
-                </section>
-            </div>
+    <section class="card mt-3">
+        <div class="card-body">
+            <section class="input-group input-group-sm">
+                <input type="file" ref="file" class="form-control"
+                        v-on:change="fileUploader()">
+            </section>
         </div>
     </section>
 </template>

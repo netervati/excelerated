@@ -1,9 +1,16 @@
 <template>
   <div class="container-fluid">
     <main class=row>
-      <Import />
-      <Piechart />
-      <Barchart />
+      <section class="col-sm-12 col-md-6 col-lg-3">
+        <Import />
+      </section>
+      <section class="col-sm-12 col-md-12 col-lg-6">
+        
+      </section>
+      <section class="col-sm-12 col-md-6 col-lg-3">
+        <Piechart />
+        <Barchart />
+      </section>
     </main>
   </div>
 </template>
