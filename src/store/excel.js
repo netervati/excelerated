@@ -1,8 +1,8 @@
 import { defineStore } from "pinia"
 import { sortData } from "../utils/datasort"
-import { groupedData } from "../utils/unique"
+import { mergeData } from "../utils/unique"
 
-export const excelStore = defineStore('excel',{
+export const excelStore = defineStore('excel', {
     state: ()=> {
         return { excelData: [] }
     },
@@ -17,11 +17,25 @@ export const excelStore = defineStore('excel',{
             }
         },
         groupData(state) {
-            return (colValue) => {
-                return groupedData({
-                    column: colValue,
-                    data: state.excelData
+            return (params) => {
+                const tmpData = state.excelData
+
+                const uniqueData = mergeData({
+                    column: params.label,
+                    data: tmpData,
+                    series: params.data
                 })
+
+                const splittedData = {series: [], labels: [] }
+
+                if (uniqueData.length > 0){
+                    for (let x = 0, y = uniqueData.length; x < y; x++){
+                        splittedData.series.push(uniqueData[x][params.data])
+                        splittedData.labels.push(uniqueData[x][params.label])
+                    }
+                }
+
+                return splittedData
             }
         },
         splitData(state) {

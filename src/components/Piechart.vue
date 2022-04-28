@@ -2,7 +2,7 @@
     <section class="col-sm-12 col-md-6 col-lg-3">
         <div class="card mt-3">
             <div class="card-body">
-                <section class="input-group input-group-sm mb-3">
+                <section class="input-group input-group-sm">
                     <span class="input-group-text">Labels & Data</span>
                     <input type="number" aria-label="Label Index" class="form-control" 
                         v-model="labelIndex" 
@@ -10,6 +10,12 @@
                     <input type="number" aria-label="Data Index" class="form-control" 
                         v-model="dataIndex" 
                         v-on:change="refreshData">
+                </section>
+                <section class="form-check mt-2 mb-3">
+                    <input class="form-check-input" type="checkbox" id="flexCheckChecked"
+                        v-model="isGrouped"
+                        v-on:change="refreshData">
+                    <label class="form-check-label" for="flexCheckChecked">Group Labels</label>
                 </section>
                 <Pie :chart-data="chartData" />
             </div>
@@ -61,18 +67,24 @@ export default {
             },
             labelIndex: 0,
             dataIndex: 1,
+            isGrouped: false
         }
     },
     methods: {
         refreshData() {
-            const splittedData = this.excel.splitData({ 
-                data: this.dataIndex, 
-                label: this.labelIndex 
-            })
+            const splittedData = this.isGrouped === false ? 
+                this.excel.splitData({ 
+                    data: this.dataIndex, 
+                    label: this.labelIndex 
+                }) :
+                this.excel.groupData({ 
+                    data: this.dataIndex, 
+                    label: this.labelIndex 
+                })
 
             this.chartData.labels = splittedData.labels
             this.chartData.datasets[0].data = splittedData.series
-        }
+        },
     },
     mounted() {
         this.excel.$subscribe(this.refreshData)

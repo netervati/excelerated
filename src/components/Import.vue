@@ -27,8 +27,6 @@ export default {
             try {
                 excel.excelData = await readXlsxFile(file.value.files[0]).
                                         then( rows => { return rows })
-                // console.log (excel.excelData)
-                // console.log (excel.groupData)
             }
             catch { console.log("Error") }
         }

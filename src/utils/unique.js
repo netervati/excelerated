@@ -1,13 +1,19 @@
-export const groupedData = function (params) {
+export const mergeData = function (params) {
+    /** TODO: Grouped rows should have their data columns summed. */
     const uniqueArray = []
 
-    params.data.filter(a => {
-        let exists = uniqueArray.filter(b => {
-            if (a[params.column] == b[params.column]) return b
-        })
+    for (let x = 0, y = params.data.length, data = params.data; x < y; x++) {
+        let exists = false
 
-        if (exists.length == 0) uniqueArray.push(a)
-    })
+        for (let v = 0, w = uniqueArray.length, dataUnique = uniqueArray; v < w; v++) {
+            if (dataUnique[v][params.column] == data[x][params.column]){
+                // uniqueArray[v][params.series] = 100
+                exists = true
+            }
+        }
+
+        if (!exists) uniqueArray.push(data[x])
+    }
 
     return uniqueArray
 }
