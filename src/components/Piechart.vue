@@ -12,10 +12,10 @@
                         v-on:change="refreshData">
                 </section>
                 <section class="form-check mt-2 mb-3">
-                    <input class="form-check-input" type="checkbox" id="flexCheckChecked"
+                    <input class="form-check-input" type="checkbox" id="check-pie"
                         v-model="isGrouped"
                         v-on:change="refreshData">
-                    <label class="form-check-label" for="flexCheckChecked">Group Labels</label>
+                    <label class="form-check-label" for="check-pie">Group Labels</label>
                 </section>
                 <Pie :chart-data="chartData" />
             </div>
@@ -59,6 +59,10 @@ export default {
             chartData: {
                 labels: [],
                 datasets: [
+                    {
+                        backgroundColor: HEX_COLORS,
+                        data: []
+                    },
                     {
                         backgroundColor: HEX_COLORS,
                         data: []

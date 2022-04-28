@@ -11,6 +11,12 @@
                         v-model="dataIndex" 
                         v-on:change="refreshData">
                 </section>
+                <section class="form-check mt-2 mb-3">
+                    <input class="form-check-input" type="checkbox" id="check-bar"
+                        v-model="isGrouped"
+                        v-on:change="refreshData">
+                    <label class="form-check-label" for="check-bar">Group Labels</label>
+                </section>
                 <Bar :chart-data="chartData" />
             </div>
         </div>
@@ -65,14 +71,20 @@ export default {
             },
             labelIndex: 0,
             dataIndex: 1,
+            isGrouped: false
         }
     },
     methods: {
         refreshData() {
-            const splittedData = this.excel.splitData({ 
-                data: this.dataIndex, 
-                label: this.labelIndex 
-            })
+            const splittedData = this.isGrouped === false ? 
+                this.excel.splitData({ 
+                    data: this.dataIndex, 
+                    label: this.labelIndex 
+                }) :
+                this.excel.groupData({ 
+                    data: this.dataIndex, 
+                    label: this.labelIndex 
+                })
 
             this.chartData.labels = splittedData.labels
             this.chartData.datasets[0].data = splittedData.series
