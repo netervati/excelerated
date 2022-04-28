@@ -62,11 +62,7 @@ export default {
                     {
                         backgroundColor: HEX_COLORS,
                         data: []
-                    },
-                    {
-                        backgroundColor: HEX_COLORS,
-                        data: []
-                    },
+                    }
                 ]
             },
             labelIndex: 0,
