@@ -11,8 +11,14 @@
             <section class="table-responsive">
                 <table class="table table-striped table-sm">
                     <tbody>
-                        <tr v-for="top of topData" :key="top">
-                            <td v-for="cell of top" :key="cell">{{ cell }}</td>
+                        <tr 
+                            v-for="top of topData" 
+                            :key="top">
+                            <td 
+                                v-for="cell of top" 
+                                :key="cell">
+                                {{ cell }}
+                            </td>
                         </tr>
                     </tbody>
                 </table>
