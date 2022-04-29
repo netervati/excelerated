@@ -14,9 +14,8 @@ export const excelStore = defineStore('excel', {
 
                 return sortData({
                     data: tmpData,
-                    index: params.index, 
-                    order: params.order
-                })
+                    index: params.index
+                }).slice(0,5)
             }
         },
         groupData(state) {
