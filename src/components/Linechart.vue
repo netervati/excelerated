@@ -7,7 +7,10 @@
                     v-model="labelIndex" 
                     v-on:change="refreshData">
                 <input type="number" aria-label="Data Index" class="form-control" 
-                    v-model="dataIndex" 
+                    v-model="dataIndexA" 
+                    v-on:change="refreshData">
+                <input type="number" aria-label="Data Index" class="form-control" 
+                    v-model="dataIndexB" 
                     v-on:change="refreshData">
             </section>
             <section class="form-check mt-2 mb-3">
@@ -68,29 +71,45 @@ export default {
                         backgroundColor: HEX_COLORS_TRANSPARENT,
                         borderColor: HEX_COLORS,
                         data: [],
-                        fill: true
+                        fill: true,
+                        lineTension: 0.5
+                    },
+                    {
+                        label: 'Line Chart',
+                        backgroundColor: HEX_COLORS_TRANSPARENT,
+                        borderColor: HEX_COLORS,
+                        data: [],
+                        fill: true,
+                        lineTension: 0.5
                     },
                 ]
             },
             labelIndex: 0,
-            dataIndex: 1,
+            dataIndexA: 1,
+            dataIndexB: 1,
             isGrouped: false
         }
     },
     methods: {
         refreshData() {
-            const splittedData = this.isGrouped === false ? 
-                this.excel.showData({ 
-                    data: this.dataIndex, 
+            const toPassValues = [
+                { 
+                    data: this.dataIndexA, 
                     label: this.labelIndex 
-                }) :
-                this.excel.groupData({ 
-                    data: this.dataIndex, 
+                },
+                { 
+                    data: this.dataIndexB, 
                     label: this.labelIndex 
-                })
+                }
+            ]
 
-            this.chartData.labels = splittedData.labels
-            this.chartData.datasets[0].data = splittedData.series
+            const splittedData = this.isGrouped === false ? 
+                this.excel.showDoubleData(toPassValues) :
+                this.excel.groupDoubleData(toPassValues)
+
+            this.chartData.labels = splittedData[0].labels
+            this.chartData.datasets[0].data = splittedData[0].series
+            this.chartData.datasets[1].data = splittedData[1].series
         }
     },
     mounted() {

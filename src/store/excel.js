@@ -43,6 +43,53 @@ export const excelStore = defineStore('excel', {
                     series: params.data
                 })
             }
+        },
+
+        /** NOTE: This is only a temporary patch to allow the 
+         * Line chart to display two arrays of data 
+         * 
+         * TODO: Rework methods
+         * */
+         groupDoubleData(state) {
+            return (params) => {
+                const tmpData = JSON.parse(JSON.stringify(state.excelData))
+                const uniqueData = []
+
+                for (let excel of params){
+                    let dataToSplit = mergeData({
+                        column: excel.label,
+                        data: tmpData,
+                        series: excel.data
+                    })
+
+                    uniqueData.push(
+                        splitData({
+                            column: excel.label,
+                            data: dataToSplit,
+                            series: excel.data
+                        })
+                    )
+                }
+
+                return uniqueData
+            }
+        },
+        showDoubleData(state) {
+            return (params) => {
+                const returnArray = []
+
+                for (let excel of params){
+                    returnArray.push(
+                        splitData({
+                            column: excel.label,
+                            data: state.excelData,
+                            series: excel.data
+                        })
+                    )
+                }
+
+                return returnArray
+            }
         }
     }
 })
