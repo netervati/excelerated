@@ -1,7 +1,7 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-dark py-0 bg-success">
+    <nav class="navbar navbar-expand-lg navbar-dark py-2 bg-light shadow">
         <div class="container-fluid">
-            <img title="Excelerated" class="navbar-brand" src="../logo.png" />
+            <img title="Excelerated" class="navbar-brand" width="172" src="../logo.png" />
         </div>
     </nav>
 </template>
