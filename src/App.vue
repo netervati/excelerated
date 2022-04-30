@@ -15,11 +15,13 @@
         <Barchart />
       </section>
     </main>
+    <Footer />
   </div>
 </template>
 
 <script>
 import Barchart from "./components/Barchart.vue"
+import Footer from "./components/Footer.vue"
 import Import from "./components/Import.vue"
 import Linechart from "./components/Linechart.vue"
 import Menu from "./components/Menu.vue"
@@ -31,6 +33,7 @@ export default {
   name: 'App',
   components: {
     Barchart,
+    Footer,
     Import,
     Linechart,
     Menu,
