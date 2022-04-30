@@ -72,17 +72,19 @@ export default {
     },
     methods: {
         refreshData() {
-            const toPassValues = {
-                data: this.dataIndex, 
-                label: this.labelIndex 
-            }
-            
+            const toPassValues = [
+                {
+                    data: this.dataIndex, 
+                    label: this.labelIndex 
+                }
+            ]
+
             const splittedData = this.isGrouped === false ? 
                 this.excel.showData(toPassValues) :
                 this.excel.groupData(toPassValues)
 
-            this.chartData.labels = splittedData.labels
-            this.chartData.datasets[0].data = splittedData.series
+            this.chartData.labels = splittedData[0].labels
+            this.chartData.datasets[0].data = splittedData[0].series
         }
     },
     mounted() {

@@ -102,8 +102,8 @@ export default {
             ]
 
             const splittedData = this.isGrouped === false ? 
-                this.excel.showDoubleData(toPassValues) :
-                this.excel.groupDoubleData(toPassValues)
+                this.excel.showData(toPassValues) :
+                this.excel.groupData(toPassValues)
 
             this.chartData.labels = splittedData[0].labels
             this.chartData.datasets[0].data = splittedData[0].series
