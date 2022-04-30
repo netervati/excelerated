@@ -52,9 +52,7 @@ export default {
 
         return { excel }
     },
-    components: {
-        Bar
-    },
+    components: { Bar },
      data() {
         return {
             chartData: {
@@ -74,15 +72,14 @@ export default {
     },
     methods: {
         refreshData() {
+            const toPassValues = {
+                data: this.dataIndex, 
+                label: this.labelIndex 
+            }
+            
             const splittedData = this.isGrouped === false ? 
-                this.excel.showData({ 
-                    data: this.dataIndex, 
-                    label: this.labelIndex 
-                }) :
-                this.excel.groupData({ 
-                    data: this.dataIndex, 
-                    label: this.labelIndex 
-                })
+                this.excel.showData(toPassValues) :
+                this.excel.groupData(toPassValues)
 
             this.chartData.labels = splittedData.labels
             this.chartData.datasets[0].data = splittedData.series

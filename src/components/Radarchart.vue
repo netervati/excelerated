@@ -58,23 +58,21 @@ export default {
 
         return { excel }
     },
-    components: {
-        Radar
-    },
+    components: { Radar },
      data() {
         return {
             chartData: {
                 labels: [],
                 datasets: [
                     {
-                        label: 'Line Chart',
+                        label: 'Radar Chart',
                         backgroundColor: HEX_COLORS_TRANSPARENT,
                         borderColor: HEX_COLORS,
                         data: [],
                         fill: true,
                     },
                     {
-                        label: 'Line Chart',
+                        label: 'Radar Chart',
                         backgroundColor: HEX_COLORS_TRANSPARENT,
                         borderColor: HEX_COLORS,
                         data: [],

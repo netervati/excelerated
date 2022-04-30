@@ -58,9 +58,7 @@ export default {
 
         return { excel }
     },
-    components: {
-        Line
-    },
+    components: { Line },
      data() {
         return {
             chartData: {

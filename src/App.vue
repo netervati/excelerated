@@ -18,22 +18,22 @@
 </template>
 
 <script>
-import Import from "./components/Import.vue"
-import Piechart from "./components/Piechart.vue"
 import Barchart from "./components/Barchart.vue"
-import TopFive from "./components/TopFive.vue"
+import Import from "./components/Import.vue"
 import Linechart from "./components/Linechart.vue"
+import Piechart from "./components/Piechart.vue"
 import Radarchart from "./components/Radarchart.vue"
+import TopFive from "./components/TopFive.vue"
 
 export default {
   name: 'App',
   components: {
-    Import,
-    Piechart,
     Barchart,
-    TopFive,
+    Import,
     Linechart,
-    Radarchart
+    Piechart,
+    Radarchart,
+    TopFive
   }
 }
 </script>
