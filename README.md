@@ -1,8 +1,8 @@
 <h1 align="center">
-<img src="https://raw.githubusercontent.com/netervati/excelerated/main/src/logo.png" /> <br> <img alt="Vercel" src="https://therealsujitk-vercel-badge.vercel.app/?app=excelerated"> <img alt="Vue" src="https://img.shields.io/github/package-json/dependency-version/netervati/excelerated/vue?color=%2341B883"> <img alt="Pinia" src="https://img.shields.io/github/package-json/dependency-version/netervati/excelerated/pinia?color=yellow"> <br> <img alt="Chart.js" src="https://img.shields.io/github/package-json/dependency-version/netervati/excelerated/chart.js?color=%23fd777b"> <img alt="Vue-chartjs" src="https://img.shields.io/github/package-json/dependency-version/netervati/excelerated/vue-chartjs?color=%2334495E"> <img alt="GitHub package.json dependency version (prod)" src="https://img.shields.io/github/package-json/dependency-version/netervati/excelerated/read-excel-file?color=red">
+<img src="https://raw.githubusercontent.com/netervati/excelerated/main/src/logo.png" /> <br> <img alt="Vercel" src="https://img.shields.io/github/deployments/netervati/excelerated/production?label=vercel"> <img alt="Vue" src="https://img.shields.io/github/package-json/dependency-version/netervati/excelerated/vue?color=%2341B883"> <img alt="Pinia" src="https://img.shields.io/github/package-json/dependency-version/netervati/excelerated/pinia?color=yellow"> <br> <img alt="Chart.js" src="https://img.shields.io/github/package-json/dependency-version/netervati/excelerated/chart.js?color=%23fd777b"> <img alt="Vue-chartjs" src="https://img.shields.io/github/package-json/dependency-version/netervati/excelerated/vue-chartjs?color=%2334495E"> <img alt="GitHub package.json dependency version (prod)" src="https://img.shields.io/github/package-json/dependency-version/netervati/excelerated/read-excel-file?color=red">
 </h1>
 
-Excelerated is a data visualizer for .xlsx files. Just import your file and let the dashboard generate graphs for you.
+**Excelerated** is a data visualization tool for .xlsx files. Just import your file and let the dashboard generate graphs for you.
 
 <br>
 
