@@ -13,6 +13,7 @@
 import { excelStore } from "../store/excel"
 import readXlsxFile from 'read-excel-file'
 import { ref } from "vue"
+import Swal from 'sweetalert2'
 
 export default {
     name: "Import",
@@ -26,7 +27,13 @@ export default {
                 excel.excelData = await readXlsxFile(file.value.files[0]).
                                         then( rows => { return rows })
             }
-            catch { console.log("Error") }
+            catch { 
+                Swal.fire(
+                    'Invalid File Type.',
+                    'Please import .xlsx files only',
+                    'error'
+                )
+            }
         }
 
         return { 
