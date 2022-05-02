@@ -24,4 +24,11 @@ $ npm run serve
 
 <br>
 
+### Road Map
+- [ ] Customizable Dashboard
+- [ ] Drag and Drop Cards
+- [ ] Offline Support
+
+<br>
+
 *The project is still under development. More features will be added soon.*
